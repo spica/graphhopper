@@ -192,13 +192,9 @@ public class CarFlagEncoder extends AbstractFlagEncoder {
         String highwayValue = way.getTag("highway");
         String firstValue = way.getFirstPriorityTag(restrictions);
         if (highwayValue == null) {
+            // Remove ferry routes
             if (way.hasTag("route", ferries)) {
-                if (restrictedValues.contains(firstValue))
-                    return EncodingManager.Access.CAN_SKIP;
-                if (intendedValues.contains(firstValue) ||
-                        // implied default is allowed only if foot and bicycle is not specified:
-                        firstValue.isEmpty() && !way.hasTag("foot") && !way.hasTag("bicycle"))
-                    return EncodingManager.Access.FERRY;
+                return EncodingManager.Access.CAN_SKIP;
             }
             return EncodingManager.Access.CAN_SKIP;
         }
