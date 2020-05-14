@@ -65,7 +65,7 @@ public class MotorcycleFlagEncoder extends CarFlagEncoder {
     public MotorcycleFlagEncoder(int speedBits, double speedFactor, int maxTurnCosts) {
         super(speedBits, speedFactor, maxTurnCosts);
         speedTwoDirections = true;
-        restrictions.remove("motorcar");
+//        restrictions.remove("motorcar");
         //  moped, mofa
         restrictions.add("motorcycle");
 
@@ -146,6 +146,8 @@ public class MotorcycleFlagEncoder extends CarFlagEncoder {
             if (way.hasTag("route", ferries)) {
                 return EncodingManager.Access.CAN_SKIP;
             }
+            return EncodingManager.Access.CAN_SKIP;
+        } else if (highwayValue.equals("path")) {
             return EncodingManager.Access.CAN_SKIP;
         }
 
