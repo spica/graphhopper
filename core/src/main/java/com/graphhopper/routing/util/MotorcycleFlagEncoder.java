@@ -65,12 +65,22 @@ public class MotorcycleFlagEncoder extends CarFlagEncoder {
     public MotorcycleFlagEncoder(int speedBits, double speedFactor, int maxTurnCosts) {
         super(speedBits, speedFactor, maxTurnCosts);
         speedTwoDirections = true;
-//        restrictions.remove("motorcar");
+        restrictions.remove("motorcar");
         //  moped, mofa
         restrictions.add("motorcycle");
 
+        intendedValues.add("yes");
+        intendedValues.add("permissive");
+
+        potentialBarriers.add("gate");
+        potentialBarriers.add("lift_gate");
+        potentialBarriers.add("kissing_gate");
+        potentialBarriers.add("swing_gate");
+        potentialBarriers.add("cattle_grid");
+
         absoluteBarriers.remove("bus_trap");
         absoluteBarriers.remove("sump_buster");
+        absoluteBarriers.add("motorcycle_barrier");
 
         trackTypeSpeedMap.clear();
         defaultSpeedMap.clear();
@@ -84,7 +94,7 @@ public class MotorcycleFlagEncoder extends CarFlagEncoder {
         avoidSet.add("motorway");
         avoidSet.add("trunk");
         avoidSet.add("motorroad");
-        avoidSet.add("residential");
+//        avoidSet.add("residential");
 
         preferSet.add("primary");
         preferSet.add("secondary");
