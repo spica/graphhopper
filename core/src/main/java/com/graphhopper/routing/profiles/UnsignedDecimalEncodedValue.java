@@ -59,7 +59,7 @@ public final class UnsignedDecimalEncodedValue extends UnsignedIntEncodedValue i
         if (value < 0)
             throw new IllegalArgumentException("Negative value for " + getName() + " not allowed! " + value);
         if (Double.isNaN(value))
-            throw new IllegalArgumentException("NaN value for " + getName() + " not allowed!");
+            value = 0;
 
         super.setInt(reverse, ints, toInt(value));
     }
